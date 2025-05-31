@@ -63,17 +63,27 @@ namespace habilitations2024.dal
         /// Récupère et retourne les développeurs
         /// </summary>
         /// <returns>liste des développeurs</returns>
-        public List<Developpeur> GetLesDeveloppeurs()
+        public List<Developpeur> GetLesDeveloppeurs(int idProfil = 0)
         {
             List<Developpeur> lesDeveloppeurs = new List<Developpeur>();
             if (access.Manager != null)
             {
                 string req = "select d.iddeveloppeur as iddeveloppeur, d.nom as nom, d.prenom as prenom, d.tel as tel, d.mail as mail, p.idprofil as idprofil, p.nom as profil ";
                 req += "from developpeur d join profil p on (d.idprofil = p.idprofil) ";
+                if (idProfil != 0)
+                {
+                    req += "where d.idprofil = @profilId ";
+                }
                 req += "order by nom, prenom;";
+                Dictionary<string, object> parametres = null;
+                if (idProfil != 0)
+                {
+                    parametres = new Dictionary<string, object>();
+                    parametres.Add("@profilId", idProfil);
+                }
                 try
                 {
-                    List<Object[]> records = access.Manager.ReqSelect(req);
+                    List<Object[]> records = access.Manager.ReqSelect(req, parametres);
                     if (records != null)
                     {
                         foreach (Object[] record in records)

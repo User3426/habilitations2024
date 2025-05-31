@@ -52,6 +52,7 @@ namespace habilitations2024.view
             controller = new FrmHabilitationsController();
             RemplirListeDeveloppeurs();
             RemplirListeProfils();
+            RemplirFiltre();
             EnCourseModifDeveloppeur(false);
             EnCoursModifPwd(false);
         }
@@ -59,9 +60,9 @@ namespace habilitations2024.view
         /// <summary>
         /// Affiche les développeurs
         /// </summary>
-        private void RemplirListeDeveloppeurs()
+        private void RemplirListeDeveloppeurs(int idProfil = 0)
         {
-            List<Developpeur> lesDeveloppeurs = controller.GetLesDeveloppeurs();
+            List<Developpeur> lesDeveloppeurs = controller.GetLesDeveloppeurs(idProfil);
             bdgDeveloppeurs.DataSource = lesDeveloppeurs;
             dgvDeveloppeurs.DataSource = bdgDeveloppeurs;
             dgvDeveloppeurs.Columns["iddeveloppeur"].Visible = false;
@@ -77,6 +78,19 @@ namespace habilitations2024.view
             List<Profil> lesProfils = controller.GetLesProfils();
             bdgProfils.DataSource = lesProfils;
             cboProfil.DataSource = bdgProfils;
+        }
+
+        /// <summary>
+        /// remplir le combo de filtre 
+        /// </summary>
+        private void RemplirFiltre()
+        {
+            List<Profil> lesFiltres = controller.GetLesProfils();
+            // ajout d'une première ligne vide
+            lesFiltres.Insert(0, new Profil(0, ""));
+            // ajout dans le combo et selection par défaut de la ligne vide
+            cboFiltre.DataSource = lesFiltres;
+            cboFiltre.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -254,5 +268,13 @@ namespace habilitations2024.view
             txtPwd2.Text = "";
         }
 
+        private void cboFiltre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Récupère le Profil sélectionné
+            Profil selection = (Profil)cboFiltre.SelectedItem;
+            int idProfil = selection.Idprofil;
+            // Recharge le data grkd view
+            RemplirListeDeveloppeurs(idProfil);
+        }
     }
 }

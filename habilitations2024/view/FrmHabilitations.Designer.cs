@@ -52,6 +52,8 @@
             this.btnDemandeSupprDev = new System.Windows.Forms.Button();
             this.btnDemandeModifDev = new System.Windows.Forms.Button();
             this.grbLesDeveloppeurs = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboFiltre = new System.Windows.Forms.ComboBox();
             this.dgvDeveloppeurs = new System.Windows.Forms.DataGridView();
             this.grbPwd.SuspendLayout();
             this.grbDeveloppeur.SuspendLayout();
@@ -153,7 +155,7 @@
             // cboProfil
             // 
             this.cboProfil.FormattingEnabled = true;
-            this.cboProfil.Location = new System.Drawing.Point(354, 71);
+            this.cboProfil.Location = new System.Drawing.Point(354, 70);
             this.cboProfil.Name = "cboProfil";
             this.cboProfil.Size = new System.Drawing.Size(161, 21);
             this.cboProfil.TabIndex = 8;
@@ -161,7 +163,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(308, 74);
+            this.label5.Location = new System.Drawing.Point(308, 73);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 13);
             this.label5.TabIndex = 8;
@@ -170,7 +172,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(308, 22);
+            this.label4.Location = new System.Drawing.Point(308, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 13);
             this.label4.TabIndex = 7;
@@ -179,7 +181,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(308, 48);
+            this.label3.Location = new System.Drawing.Point(308, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 13);
             this.label3.TabIndex = 6;
@@ -188,7 +190,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 48);
+            this.label2.Location = new System.Drawing.Point(6, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 5;
@@ -196,7 +198,7 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(354, 19);
+            this.txtMail.Location = new System.Drawing.Point(354, 18);
             this.txtMail.MaxLength = 50;
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(245, 20);
@@ -204,7 +206,7 @@
             // 
             // txtTel
             // 
-            this.txtTel.Location = new System.Drawing.Point(354, 45);
+            this.txtTel.Location = new System.Drawing.Point(354, 44);
             this.txtTel.MaxLength = 15;
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(161, 20);
@@ -212,7 +214,7 @@
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(54, 45);
+            this.txtPrenom.Location = new System.Drawing.Point(54, 48);
             this.txtPrenom.MaxLength = 20;
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(245, 20);
@@ -221,7 +223,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
+            this.label1.Location = new System.Drawing.Point(6, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 1;
@@ -229,7 +231,7 @@
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(54, 19);
+            this.txtNom.Location = new System.Drawing.Point(54, 22);
             this.txtNom.MaxLength = 20;
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(245, 20);
@@ -288,6 +290,8 @@
             // 
             // grbLesDeveloppeurs
             // 
+            this.grbLesDeveloppeurs.Controls.Add(this.label8);
+            this.grbLesDeveloppeurs.Controls.Add(this.cboFiltre);
             this.grbLesDeveloppeurs.Controls.Add(this.btnDemandeChangePwd);
             this.grbLesDeveloppeurs.Controls.Add(this.btnDemandeSupprDev);
             this.grbLesDeveloppeurs.Controls.Add(this.btnDemandeModifDev);
@@ -298,6 +302,24 @@
             this.grbLesDeveloppeurs.TabIndex = 4;
             this.grbLesDeveloppeurs.TabStop = false;
             this.grbLesDeveloppeurs.Text = "les développeurs";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(351, 234);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "filtrer les profils :";
+            // 
+            // cboFiltre
+            // 
+            this.cboFiltre.FormattingEnabled = true;
+            this.cboFiltre.Location = new System.Drawing.Point(438, 231);
+            this.cboFiltre.Name = "cboFiltre";
+            this.cboFiltre.Size = new System.Drawing.Size(161, 21);
+            this.cboFiltre.TabIndex = 4;
+            this.cboFiltre.SelectedIndexChanged += new System.EventHandler(this.cboFiltre_SelectedIndexChanged);
             // 
             // dgvDeveloppeurs
             // 
@@ -312,14 +334,14 @@
             this.dgvDeveloppeurs.RowHeadersVisible = false;
             this.dgvDeveloppeurs.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvDeveloppeurs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDeveloppeurs.Size = new System.Drawing.Size(581, 206);
+            this.dgvDeveloppeurs.Size = new System.Drawing.Size(593, 206);
             this.dgvDeveloppeurs.TabIndex = 0;
             // 
             // FrmHabilitations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 502);
+            this.ClientSize = new System.Drawing.Size(628, 502);
             this.Controls.Add(this.grbPwd);
             this.Controls.Add(this.grbDeveloppeur);
             this.Controls.Add(this.grbLesDeveloppeurs);
@@ -330,6 +352,7 @@
             this.grbDeveloppeur.ResumeLayout(false);
             this.grbDeveloppeur.PerformLayout();
             this.grbLesDeveloppeurs.ResumeLayout(false);
+            this.grbLesDeveloppeurs.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeveloppeurs)).EndInit();
             this.ResumeLayout(false);
 
@@ -362,6 +385,8 @@
         private System.Windows.Forms.Button btnDemandeModifDev;
         private System.Windows.Forms.GroupBox grbLesDeveloppeurs;
         private System.Windows.Forms.DataGridView dgvDeveloppeurs;
+        private System.Windows.Forms.ComboBox cboFiltre;
+        private System.Windows.Forms.Label label8;
     }
 }
 
