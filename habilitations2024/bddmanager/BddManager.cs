@@ -91,5 +91,17 @@ namespace habilitations2024.bddmanager
             return records;
         }
 
+        /// 
+
+        /// Exécution d'une requête de type LCT (begin transaction, commit, rollback)
+        /// 
+
+        /// requête
+        public void ReqControle(string stringQuery)
+        {
+            MySqlCommand command = new MySqlCommand(stringQuery, connection);
+            command.ExecuteNonQuery();
+        }
+
     }
 }
